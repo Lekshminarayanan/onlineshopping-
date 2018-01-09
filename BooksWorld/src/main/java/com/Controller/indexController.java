@@ -1,4 +1,7 @@
 package com.Controller;
+import org.springframework.stereotype.Controller;
+
+import com.Dao.UserDao;
 @Controller
 public class indexController 
 {
@@ -9,6 +12,7 @@ public class indexController
 		
 		return "index";
 	}
+ 
  @RequestMapping("/index")
  public String home()
 		{
@@ -25,7 +29,7 @@ public ModelAndView goToRegister() {
 		 return mv;
 	 }
 	 @RequestMapping(value="/saveRegister",method=RequestMethod.POST)
-	 public ModelAndView saveRegister(@ModelAttribute("user")User user,BindingResult result)
+	 public ModelAndView saveRegister(@Valid @ModelAttribute("user")User user,BindingResult result)
 	 {
 	 		 ModelAndView mv=new ModelAndView();
 	 		 if(result.hasErrors())
@@ -36,7 +40,7 @@ public ModelAndView goToRegister() {
 	 		 else
 	 		 {
 	 		 user.setRole("ROLE_USER")
-	 		 userDaoImpl.insertUser(user);
+	 		 userDao.insertUser(user);
 	 		 mv.setViewName("index");
 	 		 return mav;
 	 	 }

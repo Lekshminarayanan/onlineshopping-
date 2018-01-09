@@ -96,13 +96,13 @@ public ModelAndView addtocart(HttpServletRequest request)
 }
 
 @RequestMapping(value="/checkout" method=RequestMethod.GET)
-public ModelAndView checkoutProcess(HttpServletRequest req)
+public ModelAndView goToCheckout(HttpServletRequest req)
 {
 	ModelAndView mv=new ModelAndView();
 	Principal principal=req.getUserPrincipal();
 	String userEmail=principal.getName();
 	User u=userDaoImpl.findUserByEmail(userEmail);
-	List<Cart> cart=cartDaoImpl.findByCartID(userEmail);
+	List<Cart> cart=cartDaoImpl.findByCartId(userEmail);
 	mv.addObject("user",u);
 	mv.addObject("cart",cart);
 	return mv;
@@ -111,10 +111,12 @@ public ModelAndView checkoutProcess(HttpServletRequest req)
 RequestMapping(value="/Orderprocess",method=RequestMethod.GET)
 public ModelAndView orderProcess(HttpServletRequest req)
 {
-	ModelAndView mv=new ModelAndView();
+	ModelAndView mv=new ModelAndView("ack");
 	Orders ord=new Orders();
 	Principal principal=req.getUserPrincipal();
 	String userEmail=principal.getName();
+	List<Cart> cart=cartDaoImpl.findUserById(userEmail);
+	
 	Double total= Double.parseDouble(req.getParameter("total"));
 	String payment=req.getParameter("payment");
 	User u=userDaoImpl.findUserByEmail(userEmail);
@@ -122,9 +124,39 @@ public ModelAndView orderProcess(HttpServletRequest req)
     ord.setTotal(total);
 ord.setPayment(payment);
 ordersDaoImpl.insertOrder(ord);
-mv.addObject("orderDetails",u);
-mv.setViewName("ack");
+mv.addObject("user",userDaoImpl.findUserByEmail(userEmail));
+mv.addObject("orderDetails",users);
+mv.addObject("cart",cart);
 return mv;
 }
+@RequestMapping("/ack")
+public String ack()
+{
+	return "ack";
+}
+@RequestMapping(value="/daletePcart/{cartId}")
+public ModelAndView deleteCartItem(@PathVariable("cartId")int cartId,HttpServlet req)
+{
+	ModelAndView mv=new ModelAndView();
+	Principal principal=req.getUserPrincipal();
+	String userEmail=principal.getName();
+	cartDaoImpl.deleteCart(cartId);
+	mv.addObject("cartInfo",cartDaoImpl.findCartById(userEmail));
+	mv.setViewName("cart");
+	return mv;
+	
+}
+@RequestMapping(value="/goToCart",method=RequestMethod.GET)
+public ModelAndView goToCart(HttpServletRequest req)
+{
+	ModelAndView mv=new ModelAndView();
+	Principal principal=req.getUserPrincipal();
+	String userEmail=principal.getName();
+	mv.addObject("cartInfo",cartDaoImpl.findCartById(userEmail));
+	mv.setViewName("cart");
+	return mv;
+	
+}
+
 
 }

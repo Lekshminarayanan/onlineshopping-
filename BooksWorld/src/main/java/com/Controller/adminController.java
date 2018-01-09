@@ -2,13 +2,14 @@ package com.Controller;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Locale.Category;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.DaoImpl.*;
 import com.model.*;
+
 @Controller
-@RequestMapping("/admin")
 public class adminController
 {
 @Autowired; 
