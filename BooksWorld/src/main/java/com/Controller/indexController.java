@@ -2,6 +2,8 @@ package com.Controller;
 import org.springframework.stereotype.Controller;
 
 import com.Dao.UserDao;
+import com.DaoImpl.UserDaoImpl;
+import com.model.User;
 @Controller
 public class indexController 
 {

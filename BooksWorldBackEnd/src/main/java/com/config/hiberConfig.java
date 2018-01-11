@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.;
 import org.springframework.context.annotation.ComponentScan;
 
+import com.DaoImpl.CartDaoImpl;
 import com.DaoImpl.CategoryDaoImpl;
 import com.DaoImpl.UserDaoImpl;
 import com.model.Category;

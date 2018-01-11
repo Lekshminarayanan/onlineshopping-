@@ -1,5 +1,6 @@
 package com.model;
 
+import java.beans.Transient;
 import java.io.Serializable;
 import javax.persistence.*;
 @Component
