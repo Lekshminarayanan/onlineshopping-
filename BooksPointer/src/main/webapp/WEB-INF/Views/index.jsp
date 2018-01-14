@@ -12,7 +12,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/Views/header.jsp"></jsp:include>
-<h2>Books World!</h2>
+<h2>Books Pointer!</h2>
 <div class="container">
 <div id="mycarousel" class="carousel slide" data-ride="carousel">
 <ol class="Carousel-indicators">

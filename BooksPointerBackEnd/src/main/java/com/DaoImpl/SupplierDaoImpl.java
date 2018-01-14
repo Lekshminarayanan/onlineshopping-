@@ -2,6 +2,12 @@ package com.DaoImpl;
 
 
 
+import org.hibernate.HibernateException;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
 import com.Dao.*;
 import com.model.Supplier;
 @Repository
@@ -11,7 +17,7 @@ public class SupplierDaoImpl implements SupplierDao
 @Autowired
 SessionFactory sessionFactory;
 @Autowired
-public  SupplierDaoImpl (SupplierFactory sessionFactory)
+public  SupplierDaoImpl (Supplier sessionFactory)
 {
 	this.sessionFactory=sessionFactory;
 }

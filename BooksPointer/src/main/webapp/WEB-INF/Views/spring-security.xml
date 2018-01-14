@@ -29,7 +29,7 @@
 
 <security:access-denied-handler error-page="/error"/>
 <security:csrf disabled="true"/>
-</security:http> 
+ </security:http>
 <security:authentication-manager>
 	<security:authentication-provider>
 		<security:jdbc-user-service data-source-ref="datasource" users-by-username-query="select email,password,TRUE as enabled from user where email=?"

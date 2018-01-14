@@ -2,8 +2,14 @@ package com.model;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.component;
-@component
+
+import com.sun.istack.internal.NotNull;
+@Component
 @Entity
 public class User implements Serializable
 {

@@ -2,7 +2,13 @@ package com.model;
 
 import java.beans.Transient;
 import java.io.Serializable;
+import java.util.function.Supplier;
+
 import javax.persistence.*;
+
+import org.junit.experimental.categories.Category;
+import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 @Component
 @Entity
 public class Product implements Serializable
@@ -21,13 +27,14 @@ private Category category;
 
 @ManyToOne(fetch=FetchType.EAGER)
 @JoinColumn(name="sid")
+
 private Supplier supplier;
 
-@Transient
+
 MultipartFile pimage;
 
 private String imgName;
-
+@Transient
 public int getPid() {
 	return pid;
 }

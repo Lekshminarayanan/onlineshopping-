@@ -1,9 +1,37 @@
 package com.config;
 
+import java.util.Locale.Category;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.DaoImpl.CartDaoImpl;
+import com.DaoImpl.CategoryDaoImpl;
+import com.DaoImpl.OrdersDaoImpl;
+import com.DaoImpl.ProductDaoImpl;
+import com.DaoImpl.SupplierDaoImpl;
+import com.DaoImpl.UserDaoImpl;
+import com.model.Cart;
+
+import com.model.Product;
+import com.model.Supplier;
+import com.model.User;
+
+@Configuration
+@Component("com")
+@EnableTransactionManagement
 public class hiberConfig {
-	@Configuration
-	@Component("com")
-	@EnableTransactionManagement
+	
 
 
 		@Autowired
@@ -14,8 +42,8 @@ public class hiberConfig {
 			DriverManagerDataSource dsource=new DriverManagerDataSource();
 		dsource.setDriverClassName("org.h2.Driver");
 		dsource.setUrl("jdbc:h2:tcp://localhost/~/BooksWorld");
-		dsource.setUserName("sa");
-		dsource.setpassword("");
+		dsource.setUsername("sa");
+		dsource.setPassword("");
 		System.out.println("H2 Connected");
 		
 		return dsource;
@@ -39,11 +67,11 @@ public class hiberConfig {
 	{
 		LocalSessionFactoryBuilder lsfb=new LocalSessionFactoryBuilder(datasource);
 		lsfb.addProperties(getHiber());
-		lsfb.addAnnotedClass(User.class);
-		lsfb.addAnnotedClass(Supplier.class);
-		lsfb.addAnnotedClass(Category.class);
-		lsfb.addAnnotedClass(Product.class);
-		lsfb.addAnnotedClass(Cart.class);
+		lsfb.addAnnotatedClass(User.class);
+		lsfb.addAnnotatedClass(Supplier.class);
+		lsfb.addAnnotatedClass(Category.class);
+		lsfb.addAnnotatedClass(Product.class);
+		lsfb.addAnnotatedClass(Cart.class);
 		return lsfb.buildSessionFactory();
 	}
 	@Autowired
@@ -110,4 +138,4 @@ public class hiberConfig {
 
 
 	}
-}
+

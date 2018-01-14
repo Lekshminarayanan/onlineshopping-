@@ -1,6 +1,15 @@
 package com.DaoImpl;
 
+import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.Dao.CartDao;
+import com.model.Cart;
 
 @Repository("CartDaoImpl")
 public class CartDaoImpl implements CartDao 
@@ -23,7 +32,7 @@ public void insertCart(Cart cart)
 
 }
 @SuppressWarnings("Unchecked")
-public <ListCart> findByCartID(String userId)
+public List<Cart> findByCartID(String userId)
 {
 	Session session=sessionFactory.openSession();
 	List<Cart> cr=null;
@@ -43,7 +52,7 @@ public <ListCart> findByCartID(String userId)
 public Cart getCartById(int cartId,String userEmail)
 {
 	
-	Sesssion session=sessionFactory=sessionFactory.openSession();
+	Session session=sessionFactory.openSession();
 	Cart cr=null;
 	session.beginTransaction();
 	cr=(Cart)session.createQuery("Where userMailId=: email and cartProductID=:pid").setString("email",userEmail).setInteger("id",cartProductId).UniqueResult();
