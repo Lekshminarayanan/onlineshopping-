@@ -2,11 +2,12 @@ package com.model;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.component;
+
 
 import com.sun.istack.internal.NotNull;
 @Component
@@ -20,13 +21,13 @@ public class User implements Serializable
 private String name;
 @NotNull
 private String password;
-private boolean enabled;
+private boolean Enabled;
 public static long getSerialversionuid() {
 	return serialVersionUID;
 }
 private String role;
 private String address;
-@Pattren(regex=[\\d] {10},message="Enter valid digits")
+@Pattern(regex==[\\d ](10),message="Enter valid digits")
 @Size(min=8,max=10,message="Enter valid phone")
 private String phone;
 private boolean enabled;

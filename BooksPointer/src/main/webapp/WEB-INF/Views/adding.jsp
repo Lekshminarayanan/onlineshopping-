@@ -17,22 +17,22 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/Views/header.jsp"></jsp:include>
-	<div class="container">
+	<div class="container"></div>
 		<br>
-		<div class="page-header">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="panel with-nav-tabs panel-primary">
-							<div class="panel-heading">
+		<div class="page-header"></div>
+			<div class="container"></div>
+				<div class="row"></div>
+					<div class="col-md-6"></div>
+						<div class="panel with-nav-tabs panel-primary"></div>
+							<div class="panel-heading"></div>
 								<ul class="nav nav-tabs">
 									<li class="active"><a href=#tab1 data-toggle="tab">Category</a>
 									<li><a href=#tab2 data-toggle="tab">Supplier</a>
 									<li><a href=#tab3 data-toggle="tab">Product</a>
 								</ul>
-							</div>
-							<div class="panel-body">
-								<div class="tab-content">
+							
+							<div class="panel-body"></div>
+								<div class="tab-content"></div>
 									<div class="tab-pane fade in active" id="tab1">
 										<form method="post" action="<c:url value="/admin/saveSupp"/>"
 											class="form-sign-in">
@@ -53,7 +53,7 @@
 
 									<div class="tab-pane fade" id="tab2">
 										<form method="post" action="<c:url value="/admin/saveCat"/>"
-											class="form-sign-in">
+											class="form-sign-in"></form>
 											<span id="reauth-email" class="reauth-email"></span>
 											<h4 class="input-title">Category Id</h4>
 											<br> <input class="form-control" type="number"
@@ -69,10 +69,10 @@
 									<button class="btn btn-lg btn-primary" type="submit">Save</button>
 									<button class="btn btn-lg btn-warning" type="reset">Cancel</button>
 
-									<div class="tab-pane fade" id="tab3">
+									<div class="tab-pane fade" id="tab3"></div>
 										<form method="post"
 											action="<c:url value="/admin/saveProduct" />"
-											class="form-sign-in" enctype="multipart/form-data">
+											class="form-sign-in" enctype="multipart/form-data"></form>
 											<span id="reauth-email" class="reauth-email"></span>
 
 											<h4 class="input-title">Product Name</h4>
@@ -105,7 +105,8 @@
 																</c:forEach>
 														</select>
 													</tr>
-
+													
+</table></div>
 													<div class="form-group">
 														<table>
 															<tr>
