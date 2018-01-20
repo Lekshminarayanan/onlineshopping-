@@ -1,6 +1,7 @@
 package com.DaoImpl;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -35,7 +36,7 @@ public UserDaoImpl(SessionFactory sessionFactory)
 		User u=null;
 		try {
 		session.beginTransaction();
-		u=session.get(User.class,email);
+		u=(User)session.get(User.class,email);
 				session.getTransaction().commit();
 	}
 		catch(HibernateException e)

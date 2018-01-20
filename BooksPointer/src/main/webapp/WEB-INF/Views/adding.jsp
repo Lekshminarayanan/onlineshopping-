@@ -35,7 +35,7 @@
 								<div class="tab-content"></div>
 									<div class="tab-pane fade in active" id="tab1">
 										<form method="post" action="<c:url value="/admin/saveSupp"/>"
-											class="form-sign-in">
+											class="form-sign-in"></form>
 											<span id="reauth-email" class="reauth-email"></span>
 											<h4 class="input-title">Supplier Id</h4>
 											<br> <input class="form-control" type="number"
@@ -91,7 +91,7 @@
 											<br> <input class="form-control" type="number"
 												name="pStock" required /><br>
 
-
+<form>
 
 											<div class="form-group">
 												<table>
@@ -135,29 +135,13 @@
 														<br>
 														<button class="btn btn-lg btn-primary" type="submit">Save</button>
 														<button class="btn btn-lg btn-warning" type="reset">Cancel</button>
-
-														</form>
-
-
-
-													</div>
-
-
-													</div>
-													</div>
-
-													</div>
-													</div>
-
-
-													</div>
+</div>
+														
 
 
 
-													</div>
+													
 
-
-
-													</div>
+</form>
 </body>
 </html>

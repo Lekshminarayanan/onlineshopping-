@@ -3,6 +3,7 @@ package com.DaoImpl;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,7 +30,7 @@ public class ProductDaoImpl implements ProductDao
 		session.getTransaction().commit();
 			
 	}
-public List<Product> retrieve()
+public List<Product> retrieves()
 {
 	Session session=sessionFactory.openSession();
 	session.beginTransaction();
@@ -45,7 +46,7 @@ public Product findByPID(int pid)
 	Product p=null;
 	try {
 		session.beginTransaction();
-		p=session.get(Product.class,pid);
+		p=(Product)session.get(Product.class,pid);
 		session.getTransaction().commit();
 	}
 	catch(HibernateException e)
@@ -62,7 +63,7 @@ public List<Product> getProdByCatId(int cid)
 	List<Product> prod =null;
 	try {
 		session.beginTransaction();
-		prod=session.createQuery("from Product where cid="+cid).List();
+		prod=session.createQuery("from Product where cid="+cid).list();
 		session.getTransaction().commit();
 	}
 	catch(Exception e)
@@ -97,20 +98,24 @@ public void deleteProd(int pid)
 	
 	
 }
-
-public void insertProduct(com.Dao.Product product) {
-	
-	
+public Product findByPID() {
+	Session session=sessionFactory.openSession();
+	Product p=null;
+	try {
+		session.beginTransaction();
+		 p=(Product)session.get(Product.class,p);
+		session.getTransaction().commit();
+	}
+	catch(HibernateException e) {
+		System.out.println(e.getMessage());
+		session.getTransaction().rollback();
+	}return p;
 }
 
-public com.Dao.List<com.Dao.Product> retrieve() {
-	
+public List<Product> retrieve() {
+	// TODO Auto-generated method stub
 	return null;
 }
 
-public com.Dao.Product findByPID() {
-	
-	return null;
-}
 
 }

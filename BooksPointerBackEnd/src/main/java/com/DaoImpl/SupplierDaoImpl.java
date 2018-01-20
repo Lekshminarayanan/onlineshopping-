@@ -2,7 +2,10 @@ package com.DaoImpl;
 
 
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,7 +20,7 @@ public class SupplierDaoImpl implements SupplierDao
 @Autowired
 SessionFactory sessionFactory;
 @Autowired
-public  SupplierDaoImpl (Supplier sessionFactory)
+public  SupplierDaoImpl (SessionFactory sessionFactory)
 {
 	this.sessionFactory=sessionFactory;
 }
@@ -43,12 +46,12 @@ public List<Supplier>retrieve()
 
 public Supplier findBySuppId(int sid)
 {
-	Seesion session=sessionFactory.oprnSession();
+	Session session=sessionFactory.openSession();
 	Supplier s=null;
 	try
 	{
 	session.beginTransaction();
-	s=session.get(Supplier.class,sid);
+	s=(Supplier)session.get(Supplier.class,sid);
 	session.getTransaction().commit();
 }
 catch(HibernateException e)
@@ -56,5 +59,5 @@ catch(HibernateException e)
 	System.out.println(e.getMessage());
 	session.getTransaction().rollback();
 	
-}
+}return s;
 }}

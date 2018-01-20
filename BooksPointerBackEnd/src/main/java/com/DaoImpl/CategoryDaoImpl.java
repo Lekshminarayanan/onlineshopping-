@@ -20,7 +20,7 @@ import com.model.Supplier;
 	@Autowired
 	SessionFactory sessionFactory;
 	@Autowired
-	public  CategoryDaoImpl (SupplierFactory sessionFactory)
+	public  CategoryDaoImpl (SessionFactory sessionFactory)
 	{
 		this.sessionFactory=sessionFactory;
 	}
@@ -30,7 +30,7 @@ import com.model.Supplier;
 	{
 		Session session=sessionFactory.openSession();
 		session.beginTransaction();
-		session.persist(supplier);
+		session.persist(category);
 		session.getTransaction().commit();
 
 	}
@@ -40,7 +40,7 @@ import com.model.Supplier;
 	{
 		Session session=sessionFactory.openSession();
 		session.beginTransaction();
-		List<Category> li=session.createQuery("form Category").List();
+		List<Category> li=session.createQuery("form Category").list();
 		session.getTransaction().commit();
  return li;
 	}
@@ -53,8 +53,8 @@ import com.model.Supplier;
 			try
 			{
 				session.beginTransaction();
-				c=session.get(Category.class,cid);
-				session.getTransaction.commit();
+				c=(Category)session.get(Category.class,cid);
+				session.getTransaction().commit();
 				
 			}
 		catch(HibernateException e)

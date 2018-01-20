@@ -12,11 +12,11 @@ import com.Dao.CartDao;
 import com.model.Cart;
 
 @Repository("CartDaoImpl")
-public class CartDaoImpl implements CartDao 
+public  class CartDaoImpl implements CartDao 
 {
 @Autowired
 SessionFactory sessionFactory;
-
+private int cartProductId;
 
 public CartDaoImpl(SessionFactory sessionFactory)
 {
@@ -31,14 +31,14 @@ public void insertCart(Cart cart)
 	session.getTransaction().commit();
 
 }
-@SuppressWarnings("Unchecked")
+@SuppressWarnings("unchecked")
 public List<Cart> findByCartID(String userId)
 {
 	Session session=sessionFactory.openSession();
 	List<Cart> cr=null;
 	try {
 		session.beginTransaction();
-		cr=(List<Cart>).session.createQuery("from Cart where userMailId=:email").setString("email",userId).list();
+		cr=(List<Cart>)session.createQuery("from Cart where userMailId=:email").setString("email",userId).list();
 		session.getTransaction().commit();
 	}
 	catch(HibernateException e)
@@ -54,11 +54,16 @@ public Cart getCartById(int cartId,String userEmail)
 	
 	Session session=sessionFactory.openSession();
 	Cart cr=null;
+	try {
 	session.beginTransaction();
-	cr=(Cart)session.createQuery("Where userMailId=: email and cartProductID=:pid").setString("email",userEmail).setInteger("id",cartProductId).UniqueResult();
+	cr=(Cart)session.createQuery("from Product where userMail"+"cartProductID=:pid").setString("email",userEmail).setInteger("id",cartId).uniqueResult();
 	session.getTransaction().commit();
+}
+	catch(HibernateException e) {
+		e.printStackTrace();
+		session.getTransaction().rollback();
+	}
 	return cr;
-	
 	
 }
 public void deleteCart(int cartId)
@@ -66,15 +71,22 @@ public void deleteCart(int cartId)
 	Session session=sessionFactory.openSession();
 	session.beginTransaction();
 	Cart cr=(Cart)session.get(Cart.class,cartId);
-	
+	session.delete(cr);
+	session.getTransaction().commit();
 }
 
-public void updateCart(Cart cr)
+
+public void updateCart(int cartId)
 {
 	Session session=sessionFactory.openSession();
 	session.beginTransaction();
+	Cart cr=(Cart)session.get(Cart.class,cartId);
 	session.update(cr);
 	session.getTransaction().commit();
+	
+}
+public void insert(Cart cart) {
+	// TODO Auto-generated method stub
 	
 }
 

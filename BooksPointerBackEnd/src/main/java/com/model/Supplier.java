@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -38,7 +40,7 @@ public class Supplier implements Serializable
 		this.supplierName = supplierName;
 	}
 	
-	@OneToMany(targetEntity=Product.class.fetch=FetchType.EAGER,mappedBy="supplier")
+	@OneToMany(targetEntity=Product.class,fetch=FetchType.EAGER,mappedBy="supplier")
 	private Set<Product> product=new HashSet<Product>(0);
 
 

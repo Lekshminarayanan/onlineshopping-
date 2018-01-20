@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.DaoImpl.CategoryDaoImpl;
+import com.DaoImpl.ProductDaoImpl;
+import com.DaoImpl.SupplierDaoImpl;
+import com.model.Product;
 
 @Controller
 public class adminController {
@@ -45,17 +51,17 @@ public class adminController {
 		prod.setDescription(request.getParameter("pDescription"));
 		prod.setStock(Integer.parseInt(request.getParameter("pStock")));
 		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(request.getParameter("pCategory"))));
-		prod.setCategory(supplierDaoImpl.findBySuppId(Integer.parseInt(request.getParameter("pSupplier"))));
 		
-		String filepath=request.Session().getServletContext().getRealPath("/");
+		
+		String filepath=request.getSession().getServletContext().getRealPath("/");
 		String filename=file.getOriginalFilename();
 		prod.setImgName(filename);
 		productDaoImpl.insertProduct(prod);
 		System.out.println("File path"+filepath);
 		try {
 			byte imagebyte[]=file.getBytes();
-		    BufferedOutputStream fos=new BufferedOutputStream (new FileOutputStream(filePath+"/resources/"));
-		    BufferedOutputStream fos=new BufferedOutputStream (new FileOutputStream(filePath+"/resources/"));
+		    BufferedOutputStream fos=new BufferedOutputStream(new FileOutputStream(filepath+"/webapp/Images/"));
+		  
 		    fos.write(imagebyte);
 		    fos.close();
 		}
@@ -125,14 +131,14 @@ productDaoImpl.deleteProd(pid);
 		String pid=request.getParameter("pid");
 		Product prod=new Product();
 		prod.setPid(Integer.parseInt("pid"));
-		prod.setPname(request.getParameter("pName"))
+		prod.setPname(request.getParameter("pName"));
 		prod.setPrice(Double.parseDouble(request.getParameter("pPrice")));
 		prod.setDescription(request.getParameter("pDescription"));
 		prod.setStock(Integer.parseInt(request.getParameter("pStock")));
 		String cat=request.getParameter("pCategory");
 		String sat=request.getParameter("pSupplier");
 		prod.setCategory(categoryDaoImpl.findByCatId(Integer.parseInt(cat)));
-		prod.setSupplier(supplierDaoImpl.findBySuppId(Integer.parseInt(sat)));
+		
 		
 		
 		String filepath=request.getSession().getServletContext().getRealPath("/");

@@ -6,6 +6,7 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.metamodel.relational.Database;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -63,7 +64,7 @@ public class hiberConfig {
 
 	@Autowired
 	@Bean(name="sessionFactory")
-	public SessionFactory getHiberSession(Datasource datasource)
+	public SessionFactory getHiberSession(DataSource datasource)
 	{
 		LocalSessionFactoryBuilder lsfb=new LocalSessionFactoryBuilder(datasource);
 		lsfb.addProperties(getHiber());

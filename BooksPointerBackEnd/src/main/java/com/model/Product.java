@@ -6,7 +6,6 @@ import java.util.function.Supplier;
 
 import javax.persistence.*;
 
-import org.junit.experimental.categories.Category;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 @Component

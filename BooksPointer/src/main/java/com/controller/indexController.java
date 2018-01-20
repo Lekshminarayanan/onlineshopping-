@@ -1,5 +1,14 @@
 package com.controller;
 
+import java.io.IOException;
+import java.util.Locale.Category;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +19,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.DaoImpl.ProductDaoImpl;
+import com.DaoImpl.UserDaoImpl;
+
 @Controller
-public class indexController {
+public class indexController 
+{
 @Autowired
-	ProductDaoImpl 	productDaoImpl;
+	ProductDaoImpl	productDaoImpl;
 
 @Autowired
 UserDaoImpl userDaoImpl;
@@ -48,7 +62,7 @@ private Category categoryDaoImpl;
 		
 		user.setRole("ROLE_USER");
         userDaoImpl.insertUser(user);
-		mav.setViewName("/index");
+		mav.setViewName("/index");}
 		return mav;
 		
 		
@@ -86,8 +100,9 @@ private Category categoryDaoImpl;
 		return "redirect:/goToLogin";
 	}
 	
- }
+ 
 	
+ 
 	
 	
 	

@@ -5,15 +5,15 @@
 <head>
 
 <title>Books Pointers</title>
-<meta name="viewport" content="width=device-width", initial-scale=1">
+<meta name="viewport" content="width=device-width" initial-scale="1">
 <meta charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="/WEB-INF/Views/header.jsp"></jsp:include>
-<div class="container">
-<div class="col-xs-6" jumbotron">
+<div class="container"></div>
+<div class="col-xs-6" jumbotron>
 <div class="head">
 <label>Customer Shipping Details</label>
 </div>

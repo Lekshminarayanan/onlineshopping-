@@ -2,14 +2,13 @@ package com.model;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Component;
 
 
-import com.sun.istack.internal.NotNull;
 @Component
 @Entity
 public class User implements Serializable
@@ -27,7 +26,7 @@ public static long getSerialversionuid() {
 }
 private String role;
 private String address;
-@Pattern(regex==[\\d ](10),message="Enter valid digits")
+
 @Size(min=8,max=10,message="Enter valid phone")
 private String phone;
 private boolean enabled;
@@ -69,9 +68,9 @@ public void setPhone(String phone) {
 	this.phone = phone;
 }
 public boolean isEnabled() {
-	return enabled;
+	return Enabled;
 }
 public void setEnabled(boolean enabled) {
-	this.enabled = enabled;
+	this.Enabled = enabled;
 }
 }

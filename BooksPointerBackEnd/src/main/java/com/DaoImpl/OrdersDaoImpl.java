@@ -1,5 +1,6 @@
 package com.DaoImpl;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,7 +15,7 @@ public class OrdersDaoImpl implements OrderDao
 {@Autowired
 	
 	SessionFactory sessionFactory;
-	public OrdersDaoImpl()
+	public OrdersDaoImpl(SessionFactory sessionFactory)
 	{
 		
 		
@@ -23,8 +24,15 @@ public class OrdersDaoImpl implements OrderDao
 @Transactional
 public void insertOrder(Orders order)
 {
-	SessionFactory=sessionFactory.openSession();
-	Session.persist(order);
+	Session session=sessionFactory.openSession();
+	session.persist(order);
+	session.beginTransaction();
+	session.getTransaction().commit();
 	
 }
+public void insert(Orders order) {
+	// TODO Auto-generated method stub
+	
+}
+
 }

@@ -5,7 +5,7 @@
 <head>
 
 <title>Books World</title>
-<meta name="viewport" content="width=device-width" , initial-scale=1">
+<meta name="viewport" content="width=device-width" , initial-scale="1">
 <meta charset="utf-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -15,13 +15,13 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/Views/header.jsp"></jsp:include>
-	<div class="container">
+	<div class="container"></div>
 		<div class="row">
 			<div class="col-sm-4 item-photo">
 				<img style="max-width: 100%; margin-top: 30px;"
 					src="${pageContext.request.contextPath }/resources/${prod.imgName }" />
 			</div>
-			<div class=col-sm-5 " style="border: Opx solid gray">
+			<div class=col-sm-5  style="border: Opx solid gray">
 				<h3>${prod.pname }</h3>
 				<h4>${prod.description }</h4>
 				<h4>${prod.price }</h4>
@@ -47,7 +47,7 @@
 </ul>
 </div>
 					<br><br>
-<h6>We are Authorised by Indian Govt.</h6>
+<h6>We are Authorized by Indian government.</h6>
 </div>
 <h1></h1>
 <h2></h2>

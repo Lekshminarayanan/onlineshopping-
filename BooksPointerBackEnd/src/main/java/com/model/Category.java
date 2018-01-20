@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -33,7 +34,7 @@ public String getCname() {
 public void setCname(String cname) {
 	this.cname = cname;
 }
-@OneToMany(targetEntity=Product.class.fetch=FetchType.EAGER,mappedBy="category")
+@OneToMany(targetEntity=Product.class,fetch=FetchType.EAGER,mappedBy="category")
 private Set<Product> product=new HashSet<Product>(0);
 
 public Set<Product> getProduct() {
