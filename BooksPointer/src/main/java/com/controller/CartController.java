@@ -84,7 +84,7 @@ public ModelAndView addToCart(HttpServletRequest request) {
 			cm.setCartStock(cartExit.getCartStock()+qty);
 			cm.setCartImage(imgName);
 			cm.setCartProductName(pname);
-			User user=userDaoImpl.findUserByEmail(UserEmail);
+			User user=userDaoImpl.findUserByEmail(userEmail);
 			cm.setCartUserDetails(u);
 			cartDaoImpl.insertCart(cm);	
 	}
